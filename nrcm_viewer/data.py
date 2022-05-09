@@ -126,7 +126,7 @@ class ZipReader(Reader):
 
         self._dir_to_file = {
             dir_: {
-                '_'.join(path.split(o.filename)[-1].split('_')[:2]): o.filename
+                '_'.join(path.split(o.filename)[-1].split('_')[:3]): o.filename
                 for o in self._file.filelist if
                 o.filename.startswith(dir_) and o.filename.endswith(
                     IMG_APPENDIX)} for dir_ in self._dirs_with_csv}
@@ -174,7 +174,7 @@ class WorkspaceReader(Reader):
             self._dirs_with_csv.append(subdir)
 
             self._dir_to_file[subdir] = {
-                '_'.join(path.split(o)[-1].split('_')[:2]): path.join(subdir,
+                '_'.join(path.split(o)[-1].split('_')[:3]): path.join(subdir,
                                                                       o)
                 for o in files if o.endswith(IMG_APPENDIX)
             }
@@ -197,7 +197,7 @@ def _preprocess_df(df: pd.DataFrame):
         df[key] = df[key].apply(lambda x: int(float(x)))
 
     df['TIMESTAMP'] = df['FILENAME'] \
-        .apply(lambda x: '_'.join(x.split('_')[:2]))
+        .apply(lambda x: '_'.join(x.split('_')[:3]))
 
     return df
 
