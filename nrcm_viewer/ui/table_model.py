@@ -8,8 +8,11 @@ from ..data import Sample
 
 log = logging.getLogger(__name__)
 
-HEADER = ['Timestamp', 'Channel ID']
+HEADER = ['Line Name', 'Line ID', 'Line Offset', 'Timestamp', 'Channel ID']
 HEADER_TO_ATTR = {
+    'Line Name': 'line_name',
+    'Line ID': 'line_id',
+    'Line Offset': 'line_offset',
     'Timestamp': 'timestamp',
     'Channel ID': 'channel_id'
 }

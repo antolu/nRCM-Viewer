@@ -37,6 +37,9 @@ class Sample:
     filepath: str
     platform_id: str
     channel_id: str
+    line_id: str
+    line_name: str
+    line_offset: str
 
     num_detections: int
 
@@ -49,6 +52,11 @@ class Sample:
         sample.platform_id = 'UNKNOWN'
         sample.channel_id = df.CHANNEL_ID
         sample.filepath = file_path
+
+        sample.line_id = df.LINE_ID
+        sample.line_name = df.LINE_NAME
+        sample.line_offset = df.LINE_OFFSET
+
         sample.bbox = [DetectionBox(df.FAULT_UUID,
                                     df.FAULT_X0, df.FAULT_X1,
                                     df.FAULT_Y0, df.FAULT_Y1,
